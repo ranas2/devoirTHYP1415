@@ -1,0 +1,37 @@
+
+<div>
+<!--  <link rel="stylesheet" type="text/css" href="./.css" />-->
+<script type="text/javascript" src="../js/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../js/anas.js" ></script>
+<?php 
+/*$feed = file_get_contents("https://picasaweb.google.com/data/feed/base/user/107401320610499259896/albumid/6065229773950541889?alt=rss&kind=photo&authkey=Gv1sRgCNak7e60l-7VlgE&hl=fr");
+$xml=simplexml_load_string($feed);
+foreach ($xml->channel->item as $tof)
+{	echo "<img src='".$tof->enclosure["url"]."' />";
+echo $tof->title;
+}*/?>
+
+
+<?php
+foreach ($this->data as $t){
+   // print_r($t);
+   $date = $t["date"];
+    $id_etu = $t["id_etudiant"];
+    $nom = $t["nom"];
+    $url = $t["url_image"];
+?>
+<div id="etu">
+    <div>
+        <h5 id="<?php echo $id_etu;?>"> <?php echo $nom;?> </h5>
+        <img src='<?php echo $url;?>' />
+        
+     
+     <button id="valider" onclick="ajouterabs(<?php echo $id_etu; ?>);">absence</button>
+     <button id="valider1" onclick="ajouterpre(<?php echo $id_etu; ?>);">Presence</button>
+     <button id="lister" onclick="listeabs(<?php echo $date; ?>);">recuperation des absences</button>
+     <button id="lister" onclick="listepre(<?php echo $date; ?>);">recuperation des absences</button>
+</div>
+<?php 
+}
+?>
+</div>
